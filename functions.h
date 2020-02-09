@@ -62,6 +62,8 @@ public:
             "\n\x1b[0m";
 
     int userInputForK(int userInputForK) {
+        std::cin.clear();
+
         cout << "This program helps you find the Kth smallest element in a dataset." << endl
              << "Please enter your choice for K between 1 and " << this->arraySize << std::endl
              << "> ";
