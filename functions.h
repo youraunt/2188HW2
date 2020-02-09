@@ -1,11 +1,8 @@
 #ifndef HOMEWORK_2_FUNCTION_H
 #define HOMEWORK_2_FUNCTION_H
-
+/// @brief dependency imports
 #include <iostream>
 #include <fstream>
-
-using namespace std;
-
 
 class kSmall {
 private:
@@ -35,7 +32,7 @@ public:
     inline std::string getAppendage() { return this->appendage; }
 
 
-    [[noreturn]] static inline void fileNotFound() {
+    static inline void fileNotFound() {
         std::cerr << "File not found!" << std::endl
                   << "Exiting Program!" << std::endl;
         /// @brief winds down stack
@@ -49,7 +46,7 @@ public:
         exit(EXIT_SUCCESS);
     }
 
-    static inline void unknownInput() {
+    static void unknownInput() {
         std::cerr << "\nError?! Unknown input.\n" << std::endl;
         kSmall::exitProgram();
     }
@@ -64,10 +61,10 @@ public:
     int userInputForK(int userInputForK) {
         std::cin.clear();
 
-        cout << "This program helps you find the Kth smallest element in a dataset." << endl
-             << "Please enter your choice for K between 1 and " << this->arraySize << std::endl
-             << "> ";
-        cin >> userInputForK;
+        std::cout << "This program helps you find the Kth smallest element in a dataset." << std::endl
+                  << "Please enter your choice for K between 1 and " << arraySize << std::endl
+                  << "> ";
+        std::cin >> userInputForK;
         if (userInputForK % 100 == 1) appendage = "st";
         else if (userInputForK % 100 == 2) appendage = "nd";
         else if (userInputForK % 100 == 3) appendage = "rd";

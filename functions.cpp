@@ -4,54 +4,48 @@
 
 #include "functions.h"
 
-#include <sstream>
-
-/// @brief
-void kSmall::newArray(std::ifstream &infile) {
-    anArray = new int[arraySize];
-    infile.open("../input.dat");
-
-    if (!infile || infile.fail()) { fileNotFound(); }
-
-    while (infile.peek() != EOF) {
-        for (int n = 0; n < arraySize; ++n) {
-            infile >> anArray[n];
-        }
-    }
-
-    infile.close();
-}
-
-/// @brief
+/// @brief this function determines the size of the array needed
 void kSmall::setArraySize(std::ifstream &infile, int _size) {
-    string line;
+    std::string line;
     infile.open("../input.dat");
     while (getline(infile, line)) {
         _size++;
     }
     this->arraySize = _size;
     infile.close();
-}
+}///#setArraySize
 
-///// @brief
-///// @return
-//int kSmall::getArraySize() {
-//    return this->arraySize;
-//}
+/// @brief this function creates a new array of the correct size
+/// @brief it verifies that the file is present and infile is working
+/// @param infile file stream
+void kSmall::newArray(std::ifstream &infile) {
+    /// @brief sets a static size to array
+    anArray = new int[arraySize];
+    infile.open("../input.dat");
 
-///// @brief
-//void kSmall::deleteArray() {
-//    delete[] anArray;
-//}
+    if (!infile || infile.fail()) { fileNotFound(); }
+    ///@brief peek() returns the next character in the input sequence
+    /// @brief without extracting it.
+    /// @brief sets flag to eofbit when end of file is reached.
+    while (infile.peek() != EOF) {
+        for (int n = 0; n < arraySize; ++n) {
+            infile >> anArray[n];
+        }///#for
+    }///#while
 
-/// @brief
+    infile.close();
+}///#newArray
+
+
+/// @brief default constructor
 kSmall::kSmall() = default;
 
-/// @brief
-/// @param _first
-/// @param _last
-/// @param _value
-/// @return
+/// @brief This functions implements the kSmall algorithm
+/// @brief by recursively repartitioning the array.
+/// @param _first the pivot (zero in our case)
+/// @param _last The size of the array
+/// @param _value the kth value we are locating
+/// @return to itself until kth value determined
 int kSmall::findKth(int _first, int _last, int _value) {
     /// @brief declare local variables
     int start = _first;
@@ -85,25 +79,16 @@ int kSmall::findKth(int _first, int _last, int _value) {
 
         }
     }
-
+    /// @brief if partition is the same as the k value return that value
     if (partitionIndex == _value) {
         return anArray[_value];
+        /// @brief if partition is less than, recur right side
     } else if (partitionIndex < _value) {
         return findKth(partitionIndex + 1, _last, _value);
+        /// @brief if partition is greater than, recur left side
     } else {
         return findKth(_first, partitionIndex - 1, _value);
     }
 }
 
-///// @brief
-///// @return
-//int kSmall::getK() {
-//    return this->k;
-//}
-
-///// @brief
-///// @param userInput
-//void kSmall::setK(int userInput) {
-//    this->k = userInput;
-//}
 

@@ -25,27 +25,31 @@ int main() {
         int size = 0;
         int first = 0;
         int userInputForK = 0;
-
+        /// @brief sets the size of the array
         kSmall.setArraySize(infile, size);
         kSmall.getArraySize();
+        /// @brief sets the last element of the array
         int last = (kSmall.getArraySize() - 1);
+        /// @brief creates new array
         kSmall.newArray(infile);
-
+        /// @brief checks data to see if it is in range
         while (true) {
             userInputForK = kSmall.userInputForK(userInputForK);
-            if (((userInputForK > kSmall.getArraySize() || userInputForK < 1))) {
+            while (((userInputForK > kSmall.getArraySize() || userInputForK < 1))) {
                 std::cout << "\n\x1b[31mInvalid input!\n\x1b[0m" << std::endl;
                 userInputForK = kSmall.userInputForK(userInputForK);
             }
             break;
-        }
+        }///#while
+        /// @brief once data is validated sets kth value
         kSmall.setK(userInputForK - 1);
-
+        /// @brief display results to user
         std::cout << "The " << userInputForK << kSmall.getAppendage()
                   << " smallest element is " << kSmall.findKth(first, last, kSmall.getK())
                   << "." << std::endl;
+        /// @brief release memory
         kSmall.deleteArray();
     } catch (const std::exception &) {
         kSmall::unknownInput();
     }///#catch
-}
+}///#main
