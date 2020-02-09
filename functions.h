@@ -12,26 +12,24 @@ private:
     int arraySize{};
     int *anArray = nullptr;
     int k = 0;
-    int first{};
-    int last{};
+
 
 public:
     kSmall();
 
-    void newArray();
+    void newArray(std::ifstream &infile);
 
-    void setArraySize();
+    void setArraySize(std::ifstream &infile, int _size);
 
-    int getArraySize();
+    inline int getArraySize() { return this->arraySize; }
 
-    void deleteArray();
+    inline void deleteArray() { delete[] anArray; }
 
-    int findKth(int, int, int);
+    int findKth(int _first, int _last, int _value);
 
-    void setK(int);
+    inline void setK(int userInput) { this->k = userInput; }
 
-    int getKth();
-
+    inline int getK() { return this->k; }
 
 
     [[noreturn]] static inline void fileNotFound() {
@@ -40,6 +38,7 @@ public:
         /// @brief winds down stack
         exit(EXIT_FAILURE);
     }
+
     /// @brief Exits program successfully with message
     inline static std::string exitProgram() {
         std::cout << "Exiting program!" << std::endl;
@@ -51,6 +50,7 @@ public:
         std::cerr << "\nError?! Unknown input.\n" << std::endl;
         kSmall::exitProgram();
     }
+
     constexpr static const char MENU_TITLE[] =
             "\n\x1b[36m"
             "-----------------------------------\n"
@@ -58,8 +58,6 @@ public:
             "-----------------------------------\n"
             "\n\x1b[0m";
 };
-
-
 
 
 #endif //HOMEWORK_2_FUNCTION_H

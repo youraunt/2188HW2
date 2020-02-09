@@ -7,21 +7,17 @@
 #include <sstream>
 
 /// @brief
-void kSmall::newArray() {
-    ifstream infile;
-    string line;
+void kSmall::newArray(std::ifstream &infile) {
     anArray = new int[arraySize];
-
     infile.open("../input.dat");
 
     if (!infile || infile.fail()) { fileNotFound(); }
 
     while (infile.peek() != EOF) {
-        cout << "Opened!" << endl;
-
+//        cout << "Opened!" << endl;
+//
         for (int n = 0; n < arraySize; ++n) {
             infile >> anArray[n];
-
         }
     }
 
@@ -29,42 +25,40 @@ void kSmall::newArray() {
 }
 
 /// @brief
-void kSmall::setArraySize() {
-    int size = 0;
+void kSmall::setArraySize(std::ifstream &infile, int _size) {
     string line;
-
-    ifstream inFile("../input.dat");
-
-    while (getline(inFile, line)) {
-        size++;
+    infile.open("../input.dat");
+    while (getline(infile, line)) {
+        _size++;
     }
-    arraySize = size;
-    inFile.close();
+    this->arraySize = _size;
+    infile.close();
 }
 
-/// @brief
-/// @return
-int kSmall::getArraySize() {
-    return arraySize;
-}
+///// @brief
+///// @return
+//int kSmall::getArraySize() {
+//    return this->arraySize;
+//}
 
-/// @brief
-void kSmall::deleteArray() {
-    delete[] anArray;
-}
+///// @brief
+//void kSmall::deleteArray() {
+//    delete[] anArray;
+//}
 
 /// @brief
 kSmall::kSmall() = default;
 
 /// @brief
-/// @param first
-/// @param last
-/// @param value
+/// @param _first
+/// @param _last
+/// @param _value
 /// @return
-int kSmall::findKth(int first, int last, int value) {
-    int start = first;
-    int end = last;
-    int partitionIndex = first;
+int kSmall::findKth(int _first, int _last, int _value) {
+    /// @brief declare local variables
+    int start = _first;
+    int end = _last;
+    int partitionIndex = _first;
     int temp1;
     int temp2;
     unsigned int counter = end - start;
@@ -94,24 +88,24 @@ int kSmall::findKth(int first, int last, int value) {
         }
     }
 
-    if (partitionIndex == value) {
-        return anArray[value];
-    } else if (partitionIndex < value) {
-        return findKth(partitionIndex + 1, last, value);
+    if (partitionIndex == _value) {
+        return anArray[_value];
+    } else if (partitionIndex < _value) {
+        return findKth(partitionIndex + 1, _last, _value);
     } else {
-        return findKth(first, partitionIndex - 1, value);
+        return findKth(_first, partitionIndex - 1, _value);
     }
 }
 
-/// @brief
-/// @return
-int kSmall::getKth() {
-    return this->k;
-}
+///// @brief
+///// @return
+//int kSmall::getK() {
+//    return this->k;
+//}
 
-/// @brief
-/// @param userInput
-void kSmall::setK(int userInput) {
-    this->k = userInput;
-}
+///// @brief
+///// @param userInput
+//void kSmall::setK(int userInput) {
+//    this->k = userInput;
+//}
 

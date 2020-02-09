@@ -1,18 +1,21 @@
 
 #include "functions.h"
 
+#define WHAT_IS(x) std::cerr << #x << " is " << x << std::endl;
+
 int main() {
-    ifstream inFile("../input.dat");
+    std::ifstream infile;
     /// @brief instantiate object
     kSmall kSmall;
+    int size = 0;
     /// @brief declare variables
     int first = 0;
     int userInputForK = 0;
     std::string appendage;
-    kSmall.setArraySize();
+    kSmall.setArraySize(infile, size);
     kSmall.getArraySize();
     int last = (kSmall.getArraySize() - 1);
-    kSmall.newArray();
+    kSmall.newArray(infile);
     cout << "This program helps you find the Kth smallest element in a dataset." << endl
          << "Please enter your choice for K." << std::endl
          << "> ";
@@ -26,7 +29,7 @@ int main() {
 
     int partitionIndex;
     // returning partitionIndex value for Kth
-    partitionIndex = kSmall.findKth(first, last, kSmall.getKth());
+    partitionIndex = kSmall.findKth(first, last, kSmall.getK());
     std::cout << "The " << userInputForK << appendage
               << " smallest element is " << partitionIndex
               << "." << std::endl;
