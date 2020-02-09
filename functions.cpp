@@ -57,30 +57,30 @@ int kSmall::findKth(int _first, int _last, int _value) {
     int start = _first;
     int end = _last;
     int partitionIndex = _first;
-    int temp1;
-    int temp2;
-    unsigned int counter = end - start;
+    int leftPartition;
+    int rightPartition;
+    int counter = end - start;
 
-    for (unsigned int i = 0; i < counter; ++i) {
+    for (int i = 0; i < counter; ++i) {
         if (anArray[partitionIndex] > anArray[partitionIndex + 1]) {
 
-            temp1 = anArray[partitionIndex];
+            leftPartition = anArray[partitionIndex];
 
-            temp2 = anArray[partitionIndex + 1];
+            rightPartition = anArray[partitionIndex + 1];
 
-            anArray[partitionIndex + 1] = temp1;
+            anArray[partitionIndex + 1] = leftPartition;
 
-            anArray[partitionIndex] = temp2;
+            anArray[partitionIndex] = rightPartition;
 
             start++;
             partitionIndex++;
 
         } else if (anArray[partitionIndex] < anArray[partitionIndex + 1]) {
 
-            temp1 = anArray[partitionIndex + 1];
-            temp2 = anArray[end];
-            anArray[end] = temp1;
-            anArray[partitionIndex + 1] = temp2;
+            leftPartition = anArray[partitionIndex + 1];
+            rightPartition = anArray[end];
+            anArray[end] = leftPartition;
+            anArray[partitionIndex + 1] = rightPartition;
             end--;
 
         }

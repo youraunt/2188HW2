@@ -38,7 +38,7 @@ int main() {
                 userInputForK = kSmall.userInputForK(userInputForK);
             }
             break;
-        };
+        }
         kSmall.setK(userInputForK - 1);
 
         std::cout << "The " << userInputForK << kSmall.getAppendage()
