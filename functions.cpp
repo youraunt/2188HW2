@@ -91,4 +91,24 @@ int kSmall::findKth(int _first, int _last, int _value) {
     }
 }
 
+int kSmall::userInputForK(int userInputForK) {
+    std::cin.clear();
+
+    std::cout << "This program helps you find the Kth smallest element in a dataset." << std::endl
+              << "Please enter your choice for K between 1 and " << arraySize << std::endl
+              << "> ";
+    std::cin >> userInputForK;
+    setOrdinal(userInputForK);
+    return userInputForK;
+}
+
+std::string kSmall::setOrdinal(int userInputForK) {
+
+    if (userInputForK % 100 == 1) ordinal = "st";
+    else if (userInputForK % 100 == 2) ordinal = "nd";
+    else if (userInputForK % 100 == 3) ordinal = "rd";
+    else ordinal = "th";
+    return ordinal;
+}
+
 

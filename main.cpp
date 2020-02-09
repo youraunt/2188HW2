@@ -44,7 +44,7 @@ int main() {
         /// @brief once data is validated sets kth value
         kSmall.setK(userInputForK - 1);
         /// @brief display results to user
-        std::cout << "The " << userInputForK << kSmall.getAppendage()
+        std::cout << "The " << userInputForK << kSmall.getOrdinal()
                   << " smallest element is " << kSmall.findKth(first, last, kSmall.getK())
                   << "." << std::endl;
         /// @brief release memory
