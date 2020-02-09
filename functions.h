@@ -12,6 +12,7 @@ private:
     int arraySize{};
     int *anArray = nullptr;
     int k = 0;
+    std::string appendage;
 
 
 public:
@@ -30,6 +31,8 @@ public:
     inline void setK(int userInput) { this->k = userInput; }
 
     inline int getK() { return this->k; }
+
+    inline std::string getAppendage() { return this->appendage; }
 
 
     [[noreturn]] static inline void fileNotFound() {
@@ -57,6 +60,19 @@ public:
             "|            Main Menu            |\n"
             "-----------------------------------\n"
             "\n\x1b[0m";
+
+    int userInputForK(int userInputForK) {
+        cout << "This program helps you find the Kth smallest element in a dataset." << endl
+             << "Please enter your choice for K between 1 and " << this->arraySize << std::endl
+             << "> ";
+        cin >> userInputForK;
+        if (userInputForK % 100 == 1) appendage = "st";
+        else if (userInputForK % 100 == 2) appendage = "nd";
+        else if (userInputForK % 100 == 3) appendage = "rd";
+        else appendage = "th";
+        return userInputForK;
+    }
+
 };
 
 

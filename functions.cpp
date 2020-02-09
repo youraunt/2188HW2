@@ -14,8 +14,6 @@ void kSmall::newArray(std::ifstream &infile) {
     if (!infile || infile.fail()) { fileNotFound(); }
 
     while (infile.peek() != EOF) {
-//        cout << "Opened!" << endl;
-//
         for (int n = 0; n < arraySize; ++n) {
             infile >> anArray[n];
         }
