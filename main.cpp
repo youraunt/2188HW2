@@ -3,11 +3,12 @@
 *  Student ID   : 107452188
 *  Class        : CSC 2421
 *  HW#          : 2
-*  Due Date     : Feb. 10, 2020
+*  Due Date     : 11:59 PM Feb. 10, 2020
 *  File Name    : 2188HW2
 *******************************************************/
 #include "functions.h"
-
+/// @brief this macro lets you output variables
+/// @brief I use it to debug
 #define WHAT_IS(x) std::cerr << #x << " is " << (x) << std::endl;
 
 int main() {

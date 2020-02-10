@@ -75,10 +75,10 @@ int kSmall::findKth(int _first, int _last, int _value) {
             rightPartition = anArray[end];
             anArray[end] = leftPartition;
             anArray[partitionIndex + 1] = rightPartition;
-            end--;
+            --end;
 
-        }
-    }
+        }///#else if
+    }///#for
     /// @brief if partition is the same as the k value return that value
     if (partitionIndex == _value) {
         return anArray[_value];
@@ -89,26 +89,28 @@ int kSmall::findKth(int _first, int _last, int _value) {
     } else {
         return findKth(_first, partitionIndex - 1, _value);
     }
-}
-
+}///# find Kth
+/// @brief
+/// @param userInputForK
+/// @return
 int kSmall::userInputForK(int userInputForK) {
-    std::cin.clear();
-
     std::cout << "This program helps you find the Kth smallest element in a dataset." << std::endl
               << "Please enter your choice for K between 1 and " << arraySize << std::endl
               << "> ";
     std::cin >> userInputForK;
     setOrdinal(userInputForK);
     return userInputForK;
-}
+}///# userInputForK
 
+/// @brief sets the ordinal of k
+/// @param userInputForK integer value of k
+/// @return string value of matcing ordinal
 std::string kSmall::setOrdinal(int userInputForK) {
-
     if (userInputForK % 100 == 1) ordinal = "st";
     else if (userInputForK % 100 == 2) ordinal = "nd";
     else if (userInputForK % 100 == 3) ordinal = "rd";
     else ordinal = "th";
     return ordinal;
-}
+}///#setOrdinal
 
 
