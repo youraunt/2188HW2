@@ -30,7 +30,8 @@ A high level look of the algorithm is as follows:
 
 Name:  main.cpp
    Main program.  This is the driver program that calls sub-functions
-   to read data from the user.
+   to read data from the user and calculate the kth smallest in an unsorted 
+   array using recursion. 
 
 Name:  functions.h
    Contains the prototypes for the class function.
@@ -58,7 +59,7 @@ Name: function.cpp
 
 1. Uncompress the homework.  The homework file is compressed.  
    To uncompress it use the following commands 
-       % unzip 2188HW1
+       % unzip 2188HW2
 
    Now you should see a directory named homework with the files:
 	main.cpp

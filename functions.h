@@ -6,7 +6,7 @@
 
 class kSmall {
 private:
-    int arraySize{};
+    int arraySize;
     int *anArray = nullptr;
     int k = 0;
     std::string ordinal;

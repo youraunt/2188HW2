@@ -3,6 +3,7 @@
 ////
 
 #include "functions.h"
+#define WHAT_IS(x) std::cerr << #x << " is " << (x) << std::endl;
 
 /// @brief this function determines the size of the array needed
 void kSmall::setArraySize(std::ifstream &infile, int _size) {
@@ -65,7 +66,7 @@ int kSmall::findKth(int _first, int _last, int _value) {
             anArray[partitionIndex + 1] = leftPartition;
 
             anArray[partitionIndex] = rightPartition;
-
+            WHAT_IS(start);
             start++;
             partitionIndex++;
 
