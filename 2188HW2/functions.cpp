@@ -3,12 +3,11 @@
 ////
 
 #include "functions.h"
-#define WHAT_IS(x) std::cerr << #x << " is " << (x) << std::endl;
 
 /// @brief this function determines the size of the array needed
 void kSmall::setArraySize(std::ifstream &infile, int _size) {
     std::string line;
-    infile.open("../input.dat");
+    infile.open("input.dat");
     while (getline(infile, line)) {
         _size++;
     }
@@ -22,7 +21,7 @@ void kSmall::setArraySize(std::ifstream &infile, int _size) {
 void kSmall::newArray(std::ifstream &infile) {
     /// @brief sets a static size to array
     anArray = new int[arraySize];
-    infile.open("../input.dat");
+    infile.open("input.dat");
 
     if (!infile || infile.fail()) { fileNotFound(); }
     ///@brief peek() returns the next character in the input sequence
@@ -66,7 +65,7 @@ int kSmall::findKth(int _first, int _last, int _value) {
             anArray[partitionIndex + 1] = leftPartition;
 
             anArray[partitionIndex] = rightPartition;
-            WHAT_IS(start);
+
             start++;
             partitionIndex++;
 
@@ -107,10 +106,10 @@ int kSmall::userInputForK(int userInputForK) {
 /// @param userInputForK integer value of k
 /// @return string value of matcing ordinal
 std::string kSmall::setOrdinal(int userInputForK) {
-    ordinal = userInputForK % 100 == 1 ? "st"
-                                       : userInputForK % 100 == 2 ? "nd"
-                                                                  : userInputForK % 100 == 3 ? "rd"
-                                                                                             : "th";
+    if (userInputForK % 100 == 1) ordinal = "st";
+    else if (userInputForK % 100 == 2) ordinal = "nd";
+    else if (userInputForK % 100 == 3) ordinal = "rd";
+    else ordinal = "th";
     return ordinal;
 }///#setOrdinal
 
